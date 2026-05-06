@@ -66,15 +66,15 @@ while (i < len(s)):
 Всего возможны три варианта:
 1) Участки не пересекаются
    
-   <img width="643" height="215" alt="image" src="https://github.com/user-attachments/assets/ddf17ec1-ebf6-4963-b82a-b1f65e5e1cad" />
-   
+   <img width="705" height="220" alt="1" src="https://github.com/user-attachments/assets/ff2a8ffe-ae35-4aaf-86d9-88a08ad065e0" />
+
 2) Участки пересекаются
 
-   <img width="549" height="217" alt="image" src="https://github.com/user-attachments/assets/58df0c1c-8b67-4634-ac81-b7d54ff074ea" />
+    <img width="616" height="206" alt="2" src="https://github.com/user-attachments/assets/4b471933-53fd-486c-865e-759079181612" />
 
 3) Как частный случай пунтка 2. Участки накладываются целиком
 
-   <img width="433" height="218" alt="image" src="https://github.com/user-attachments/assets/4b7d7d34-9dd1-42e2-a3d1-e2457d874eb0" />
+    <img width="427" height="220" alt="3" src="https://github.com/user-attachments/assets/aab739f1-414f-4d6f-bb4b-a0771c9e2ea6" />
 
 Заметим, что во 2 и 3 пунктах максимальная из левых границ отрезков лежит левее минимальной из правых границ отрезков. Таким образом мы сможем написать условие, чтобы отделить 1 и 2, 3 пункты. Данное решение работает за O(1)
 
@@ -201,4 +201,55 @@ for i in range(len(buildings) - 1, -1, -1):
         min_dist = min(left[i], i - shop_pos) #запоминаем расстояние до ближайшего магазина
         ans = max(ans, min_dist)
 print(ans)
+```
+
+# Задача 5 (Уравнение с корнем)
+
+Задано уравнение &radic;(ax + b) = c. Решите это уравнение в целых числах
+
+### **Формат ввода**
+
+В трех строках вводятся по одному числу - a, b и с соответственно
+
+### **Формат вывода**
+
+В ответе выведите решения уравнения в порядке возрастания. Если решений нет выведите "NO SOLUTIONS", если решений много - "MANY SOLUTIONS"
+
+### Пример
+```
+3    ->
+0    ->    3
+9    ->
+
+2    ->
+5    ->    NO SOLUTIONS
+-1   ->
+
+0    ->
+9    ->    MANY SOLUTIONS
+3    ->
+```
+
+## Объяснение решения
+Сначала разберемся с ситуацией, когда решений у нас быть не может. Она происходит в том случае, если c < 0, и если уравнение не разрешимо относительно целых чисел
+
+Много решений появляется в случае, если a == 0 и уравнение разрешимо
+
+```python
+a = int(input())
+b = int(input())
+c = int(input())
+if c < 0:
+    print('NO SOLUTIONS')
+elif a == 0:
+    if b * b == c:
+        print('MANY SOLUTIONS')
+    else:
+        print('NO SOLUTIONS')
+else:
+    x = c * c - b
+    if x % a == 0:
+        print(x // a)
+    else:
+        print('NO SOLUTIONS')
 ```
