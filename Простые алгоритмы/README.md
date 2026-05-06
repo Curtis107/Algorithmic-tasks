@@ -65,16 +65,16 @@ while (i < len(s)):
 ## Объяснение решения
 Всего возможны три варианта:
 1) Участки не пересекаются
-   
-   <img width="705" height="220" alt="1" src="https://github.com/user-attachments/assets/ff2a8ffe-ae35-4aaf-86d9-88a08ad065e0" />
 
+    ![2.1](https://github.com/Curtis107/Algorithmic-task-helper/blob/main/Простые%20задачи/images/Задача%202%20(покраска%20деревьев)/1.png)
+   
 2) Участки пересекаются
 
-    <img width="616" height="206" alt="2" src="https://github.com/user-attachments/assets/4b471933-53fd-486c-865e-759079181612" />
+    ![2.2](https://github.com/Curtis107/Algorithmic-task-helper/blob/main/Простые%20задачи/images/Задача%202%20(покраска%20деревьев)/2.png)
 
 3) Как частный случай пунтка 2. Участки накладываются целиком
 
-    <img width="427" height="220" alt="3" src="https://github.com/user-attachments/assets/aab739f1-414f-4d6f-bb4b-a0771c9e2ea6" />
+    ![2.3](https://github.com/Curtis107/Algorithmic-task-helper/blob/main/Простые%20задачи/images/Задача%202%20(покраска%20деревьев)/3.png)
 
 Заметим, что во 2 и 3 пунктах максимальная из левых границ отрезков лежит левее минимальной из правых границ отрезков. Таким образом мы сможем написать условие, чтобы отделить 1 и 2, 3 пункты. Данное решение работает за O(1)
 
