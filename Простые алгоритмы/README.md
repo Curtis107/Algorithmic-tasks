@@ -66,7 +66,7 @@ while (i < len(s)):
 Всего возможны три варианта:
 1) Участки не пересекаются
 
-    ![2.1](https://github.com/Curtis107/Algorithmic-task-helper/blob/main/Простые%20задачи/images/Задача%202%20(покраска%20деревьев)/1.png)
+    ![2.1](https://github.com/Curtis107/Algorithmic-tasks/blob/main/Простые%20алгоритмы/2.1.png)
    
 2) Участки пересекаются
 
