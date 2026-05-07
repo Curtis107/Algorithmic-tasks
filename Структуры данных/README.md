@@ -293,3 +293,71 @@ for customer in sorted(d):
     for goods in sorted(d[customer]):
         print(goods, d[customer][goods])
 ```
+
+# Задача 8 (банковская система)
+
+Существует банк, в котором пользователям доступны следующие действия: пополнение счета, снятие денег со счета, запрос об остатке на счете, перевод денег на счет другого пользователя, начисление процентов всем клиентам. Необходимо реализовать такую систему и для каждого запроса на остаток, банк должен выводить количество денег на счету у пользователя (положительное, отрицательное, либо 'ERROR', если у клиента не открыт счет в этом банке)
+
+### **Формат ввода**
+
+Данные передаются в файле. В каждой строке записана какая-то из 5-ти операций. Возможны следующие операции: 'DEPOSIT' *name* *sum* - пополнение счёта клиента с именем *name* на сумму *sum* (если счета нет - он создается); 'WITHDRAW' *name* *sum* - снять со счета клиента с именем *name* сумму *sum* (если счета нет - он создается); 'BALANCE' *name* - запрос на остаток средств на счету у клиента с именем *name*; 'TRANSFER' *name1* *name2* *sum* - перевод средств со счета клиента с именем *name1* клиенту с именем *name2* в размере *sum* (если у кого-то из них нет счета - он создается); 'INCOME' *p* - начислить всем клиентам, у кого открыт счет в банке, *p*% от суммы на счете (проценты начисляются только тем, у кого положительный баланс; дробная часть начисленных процентов отбрасывается)
+
+### **Формат вывода**
+
+Для каждого запроса об остатке средств выведите количество денег на балансе, если счет не открыт - выведите 'ERROR'
+
+### Пример
+```
+DEPOSIT Ivanov 100
+INCOME 5
+BALANCE Ivanov                    105
+TRANSFER Ivanov Petrov 50    ->   -50 
+WITHDRAW Petrov 100               ERROR 
+BALANCE Petrov
+BALANCE Sidorov
+```
+
+## Объяснение решения
+
+Порядок хранения данных схож с задачей №7: ключом будет фамилия, а значением баланс пользователя
+
+```python
+bank = {}
+file = open("input.txt", 'r')
+for line in file:
+    line = line.strip()
+    arr = list(line.split())
+    if arr[0] == 'DEPOSIT':
+        name, summ = arr[1], int(arr[2])
+        if name not in bank:
+            bank.update({name: 0})
+        bank[name] += summ
+
+    elif arr[0] == 'WITHDRAW':
+        name, summ = arr[1], int(arr[2])
+        if name not in bank:
+            bank.update({name: 0})
+        bank[name] -= summ
+
+    elif arr[0] == 'BALANCE':
+        name = arr[1]
+        if name not in bank:
+            print('ERROR')
+        else:
+            print(bank[name])
+
+    elif arr[0] == 'TRANSFER':
+        name1, name2, summ = arr[1], arr[2], int(arr[3])
+        if name1 not in bank:
+            bank.update({name1: 0})
+        if name2 not in bank:
+            bank.update({name2: 0})
+        bank[name1] -= summ
+        bank[name2] += summ
+
+    elif arr[0] == 'INCOME':
+        p = int(arr[1])
+        for names in bank:
+            if bank[names] > 0:
+                bank[names] += int(bank[names] * (p / 100))
+```
