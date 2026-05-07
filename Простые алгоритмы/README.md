@@ -66,7 +66,7 @@ while (i < len(s)):
 Всего возможны три варианта:
 1) Участки не пересекаются
 
-    <img width="427" height="220" alt="Image" src="https://github.com/user-attachments/assets/538a6144-6cf8-4d3a-9bbc-dbfe9d25713f" />
+   <img width="705" height="220" alt="Image" src="https://github.com/user-attachments/assets/f716d8a7-4cba-49fa-a3c9-d228fff3dd0c" />
    
 2) Участки пересекаются
 
@@ -74,7 +74,7 @@ while (i < len(s)):
 
 3) Как частный случай пунтка 2. Участки накладываются целиком
 
-    <img width="705" height="220" alt="Image" src="https://github.com/user-attachments/assets/f716d8a7-4cba-49fa-a3c9-d228fff3dd0c" />
+    <img width="427" height="220" alt="Image" src="https://github.com/user-attachments/assets/538a6144-6cf8-4d3a-9bbc-dbfe9d25713f" />
 
 Заметим, что во 2 и 3 пунктах максимальная из левых границ отрезков лежит левее минимальной из правых границ отрезков. Таким образом мы сможем написать условие, чтобы отделить 1 и 2, 3 пункты. Данное решение работает за O(1)
 
